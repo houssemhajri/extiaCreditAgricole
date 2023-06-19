@@ -1,0 +1,52 @@
+.row {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.bi-arrow-left-right {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.bi-arrow-left-right:hover {
+    font-size: 23px;
+}
+
+label {
+    float: left !important;
+}
+
+.activeSignal {
+    cursor: pointer;
+    margin-right: 3px;
+}
+
+.bi-patch-check-fill {
+    color: rgb(0, 140, 93);
+}
+
+.input-group .bi {
+    font-size: 20px;
+
+}
+
+.invalid-feedback {
+    display: block;
+    text-align: left;
+}
+
+.tauxReel {
+    font-size: larger;
+    font-weight: 700;
+}
+
+.col-sm12 .bi-arrow-left-right {
+    transform: rotate(90deg);
+}
+
+@media screen and (max-width :990px) {
+    .switchButton {
+        transform: rotate(90deg);
+        margin-bottom: 10px;
+    }
+}

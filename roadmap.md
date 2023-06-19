@@ -1,0 +1,2 @@
+- Ajout des differents devises
+- Ajout d'un graphe qui represente la variation de taux de change

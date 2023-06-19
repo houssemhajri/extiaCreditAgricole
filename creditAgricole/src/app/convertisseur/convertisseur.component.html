@@ -1,0 +1,66 @@
+<div class="row col-8 mt-3 justify-content-center tauxReel">
+    <span>Taux de change EUR / USD : {{this.taux}} </span>
+</div>
+<div class="row col-12 p-4 justify-content-center">
+    <div class="col-lg-4 col-md-8 col-sm-12 float-right">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1"><i [ngClass]="leftInput.className"></i></span>
+            <input type="number" class="form-control" [(ngModel)]="leftInput.value" [placeholder]="leftInput.name"
+                (keyup)="exchange()">
+        </div>
+    </div>
+    <div class="col-lg-4  col-md-8 col-sm-12 switchButton">
+        <i class="bi bi-arrow-left-right" (click)="switchEuroDollar()"></i>
+    </div>
+    <div class="col-lg-4 col-md-8 col-sm-12 float-left" style="float: left;">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1"><i [ngClass]="rightInput.className"></i></span>
+            <input type="number" class="form-control" [placeholder]="rightInput.name" [(ngModel)]="rightInput.value">
+        </div>
+    </div>
+</div>
+<div class="row col-12 p-4" id="tauxEntree">
+    <div class="col-lg-4 col-md-12 col-sm-12 float-left">
+        <div class="form-group mb-3 pull-left">
+            <label class="float-left"> Entrer un taux de change :</label>
+            <div class="input-group">
+                <span class="input-group-text activeSignal" id="basic-addon1" (click)="activeDesactiveTaux()"
+                    [title]="!activatedEnteredTaux?'Activer':'Desactiver'"><i
+                        [ngClass]="!activatedEnteredTaux?'bi bi-patch-check':'bi bi-patch-check-fill'"></i></span>
+
+                <input type="number" (keyup)="onChangeInputTaux()" [(ngModel)]="tauxEntree" class="form-control"
+                    placeholder="Entrer un taux de change">
+
+
+            </div>
+            <div class="invalid-feedback" *ngIf="!verifTauxEchangeEntree() && tauxEntree != 0">
+                Pas de variation plus de 2% avec le taux réel
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row col-12 p-4" *ngIf="historique.length > 0">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Value</th>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">Result</th>
+                <th scope="col">Taux</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let hist of historique">
+                <td>{{hist.time | date :'dd MMMM yyyy hh:mm:ss'}}</td>
+                <td>{{hist.value}}</td>
+                <td>{{hist.from}}</td>
+                <td>{{hist.to}}</td>
+                <td>{{hist.result}}</td>
+                <td>{{hist.taux}}</td>
+            </tr>
+    </table>
+</div>
